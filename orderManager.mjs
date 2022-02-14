@@ -3,13 +3,46 @@ import { getOrderValue } from './services/orders.mjs';
 import { getQuote } from './services/quotes.mjs';
 
 
-let orderManager = new function( customerId ){
+function OrderManager(orderId) {
+    this.orderId = orderId;
+    
+     this.processOrder = function (){
+        getOrderValue(this.orderId).then(
+            (order) => this.getQuotes(order) 
+        ).then(
+            (quotes) => this.acceptQuote(quotes)
+        ).catch(
+            (e) => console.log("error: ", e)
+        );
+        
+     };
 
-    this.toString = 
-        "orderManager for " + customerId;
+    this.getQuotes = function( order ){
+        this.order = order; // update model
+        console.log("quote for ", this.order);
+
+        // return promise
+
+        let qPromises = [12,34,56, 78, 100].map(
+           (partner) => getQuote(partner, order)
+        );
+        
+        return Promise.allSettled(qPromises);
+     };
+
+     this.acceptQuote = function( quotes ) {
+        console.log("accept one of ", quotes);
+     };
+  
 }
 
-console.log(orderManager);
+
+let myOrderManager = new OrderManager(45);
+
+console.log(myOrderManager);
+
+myOrderManager.processOrder();
+
 /*
 const order1 = getOrderValue(10);
 

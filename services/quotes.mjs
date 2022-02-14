@@ -7,7 +7,7 @@ function getQuote(partnerId, order) {
       (resolve, reject) => {
         setTimeout (
           () => {
-            if (Math.random() > 0.01 ){
+            if (Math.random() > 0.5 ){
                  reject("no quote");
                  return;
             }
