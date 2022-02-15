@@ -4,19 +4,16 @@ import { OrderProcess } from './services/orderProcess.mjs';
 
 console.log("Quote Me starting ...");
 
-let firstOrderProcess = new OrderProcess(23);
-let secondOrderProcess = new OrderProcess(64);
+let orderProcess = new OrderProcess(23);
 
 // note: console.log does not directly call toString()
 // using ""+object will coerce using toString()
-console.log("firstOrderProcess: " + firstOrderProcess );
-
-console.log("secondOrderProcess: " + secondOrderProcess );
+console.log("firstOrderProcess: " + orderProcess );
 
 try {
-    let quote = await firstOrderProcess.placeOrder();
-    console.log("firstOrderProcess quote: " + quote );
+    let quote = await orderProcess.placeOrder();
+    console.log("firstOrderProcess quote: ", quote );
 } catch(e) {
-    console.log("failed to place order " + firstOrderProcess, e);
+    console.log("failed to place order " + orderProcess, e);
 }
 

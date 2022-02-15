@@ -17,9 +17,25 @@ let OrderProcess =  function( orderId ){
 
         state.order = await getOrderValue(state.orderId);
         
-        state.quotes.push[await getQuote("dummyPartner", state.order)];
+        let partnerPromises = [
+            getQuote("Partner01", state.order),
+            getQuote("Partner02", state.order),
+            getQuote("Partner03", state.order),
+        ];
+        let settledPromises = await Promise.allSettled(partnerPromises);
+
+        let selectedQuote = settledPromises.find(
+            (i) => {
+                return i.status === "fulfilled";
+            }
+        )
+
+        if (! selectedQuote){
+            throw "No valid quote for " + orderId;
+        }
+
         // TODO select a quote, and handle empty array
-        return quote[0];
+        return selectedQuote.value;
     }
 
     // enough to display current state
