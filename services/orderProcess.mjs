@@ -2,7 +2,6 @@
 import { getOrderValue } from './orders.mjs';
 import { getQuote } from './quotes.mjs';
 
-
 let OrderProcess =  function( orderId ){
 
     let state = {
@@ -22,20 +21,16 @@ let OrderProcess =  function( orderId ){
             getQuote("Partner02", state.order),
             getQuote("Partner03", state.order),
         ];
-        let settledPromises = await Promise.allSettled(partnerPromises);
+        
+        // TODO:
 
-        let selectedQuote = settledPromises.find(
-            (i) => {
-                return i.status === "fulfilled";
-            }
-        )
+        // wait for partner responses
+        // update state.quotes 
+        // determine whether any valid responses received
+        // select one valid quote (maybe cheapest?)
+        // update state.acceptedQuote
 
-        if (! selectedQuote){
-            throw "No valid quote for " + orderId;
-        }
-
-        // TODO select a quote, and handle empty array
-        return selectedQuote.value;
+        // return selected response
     }
 
     // enough to display current state

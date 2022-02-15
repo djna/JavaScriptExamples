@@ -1,26 +1,17 @@
 
 
-
+// Fake version of a function that obtains
+// details of an order given its order id.
 function getOrderValue(orderId) {
     // fake version of an axios() call
-    let orderPromise = new Promise(
-      (resolve) => {
-        setTimeout (
-          () => {
-            const value = Math.floor(orderId * Math.random() * 100);
-            const order = { "id" : orderId, "customer" : "dummy:"+orderId, "value" : value};
-            resolve( order);
-            console.log("getOrderValue has resolved promise ", order);
-          },
-          1000
-        );
-   
-      }
-    );
+    //let orderPromise = new Promise(
+      // TODO
+      // add code to resolve promise with a fake order object
+      // or reject with an error 
+    //);
  
-    return orderPromise;
+    //return orderPromise;
+
+    return Promise.reject("Not implemented");
   }
-
-
-  
 export { getOrderValue };
