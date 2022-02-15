@@ -2,7 +2,8 @@
   "name": "jseg",
   "version": "1.0.0",
   "description": "examples",
-  "main": "app.js",
+  "main": "QuoteMe.mjs",
+  "type": "module",
   "scripts": {
     "test": "test"
   },
