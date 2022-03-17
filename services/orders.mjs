@@ -7,6 +7,7 @@ function getOrderValue(orderId) {
     //let orderPromise = new Promise(
       // TODO
       // add code to resolve promise with a fake order object
+      // with fields such as orderid, customerid, value
       // or reject with an error 
     //);
  
