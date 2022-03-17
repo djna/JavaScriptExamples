@@ -1,6 +1,6 @@
 
 
-// Test program driving the Or
+// Test program driving the Order Process
 
 import { OrderProcess } from './services/orderProcess.mjs';
 
