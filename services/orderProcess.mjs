@@ -24,10 +24,19 @@ let OrderProcess =  function( orderId ){
         ];
         let settledPromises = await Promise.allSettled(partnerPromises);
 
-        let selectedQuote = settledPromises.find(
+        let successPromises = settledPromises.filter(
             (i) => {
                 return i.status === "fulfilled";
             }
+        )
+
+        let selectedQuote = successPromises.reduce(
+            (prev, current) => {
+                return current?.value.commission 
+                            <=  (prev?.value.commission ?? current?.value.commission) 
+                            ? current : prev; 
+                           
+            }, null
         )
 
         if (! selectedQuote){
