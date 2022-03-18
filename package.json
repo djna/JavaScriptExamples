@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/djna/JavaScriptExamples/issues"
   },
-  "homepage": "https://github.com/djna/JavaScriptExamples#readme"
+  "homepage": "https://github.com/djna/JavaScriptExamples#readme",
+  "dependencies": {
+    "await-to-js": "^3.0.0"
+  }
 }
