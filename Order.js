@@ -1,18 +1,13 @@
 
 
 function Order(item, quantity) {
+    this.getValue = function(){
+        return item.price * quantity;
+    }
 
-    this.item = item;
-    this.quantity = quantity;
-
-}
-
-Order.prototype.getValue = function(){
-    return this.item.price * this.quantity;
-}
-
-Order.prototype.getSummary = function(){
-    return "Order for " + this.quantity + " of " + this.item.description + ", value " + this.getValue();
+    this.getSummary = function(){
+        return "Order for " + item.quantity + " of " + item.description + ", value " + this.getValue();
+    }
 }
 
 let specialSocks = {
