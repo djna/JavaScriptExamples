@@ -26,8 +26,8 @@ async function doWork() {
     if (err){
         console.log("FFDC error: ", err)
         // could attempt some alternative processing here
-        // or simple propogate the error
-        return err;
+        // or simply propogate the error
+        return [err];
     } 
   
     console.log("recovery processing here")
