@@ -10,7 +10,7 @@ function Order(item, quantity) {
 
     return {
         getValue : function() { return myself._getValue() },
-        getSummary: function() { return myself._getSummary() }
+        getSummary: () => this._getSummary() 
     }
 }
 
