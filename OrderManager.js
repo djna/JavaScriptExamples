@@ -1,14 +1,5 @@
 
-
-function Order(item, quantity) {
-    this.getValue = function(){
-        return item.price * quantity;
-    }
-
-    this.getSummary = function(){
-        return "Order for " + item.quantity + " of " + item.description + ", value " + this.getValue();
-    }
-}
+import { Order } from "./Order.mjs";
 
 let specialSocks = {
     description : "Nordic Socks",
@@ -27,7 +18,4 @@ console.log("Special Order ", specialOrder.getSummary());
 specialOrder.item = boringSocks;
 
 console.log("Special Order ", specialOrder.getSummary());
-
-
-
 
