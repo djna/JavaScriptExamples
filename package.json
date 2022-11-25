@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "examples",
   "main": "app.js",
+  "type": "module",
   "scripts": {
-    "test": "test"
+    "test": "mocha --recursive"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/djna/JavaScriptExamples/issues"
   },
-  "homepage": "https://github.com/djna/JavaScriptExamples#readme"
+  "homepage": "https://github.com/djna/JavaScriptExamples#readme",
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.1.0"
+  }
 }
