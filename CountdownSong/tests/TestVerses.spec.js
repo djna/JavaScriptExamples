@@ -1,4 +1,4 @@
-import {CountdownSong} from "../CountdownSong.js";
+import {CountdownSong} from "../src/CountdownSong.js";
 
 var assert = require('assert');
 describe('range of verses', function() {

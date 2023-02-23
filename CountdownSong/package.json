@@ -1,25 +1,25 @@
 {
-  "name": "countdownsong",
+  "name": "countdown",
   "version": "1.0.0",
-  "description": "DRY refactoring exercise",
-  "main": "countdownSong.js",
-
-  "directories": {
-    "test": "test"
-  },
+  "description": "",
+  "main": "src/Singer.js",
   "scripts": {
-    "test": "mocha --require @babel/polyfill --require @babel/register './test/**/*.js'"
+    "clean": "del-cli dist/**/* logs/*",
+    "build": "npm run clean && babel ./src --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files ",
+    "start": "npm run build && node dist/Singer.js",
+    "test": "mocha --compilers js:babel-core/register \"./tests/**/*.spec.js\""
   },
-  "author": "Dave Artus",
+  "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.2",
+    "del-cli": "^1.1.0",
+    "mocha": "^4.0.1",
+    "webpack": "^3.6.0"
+  },
   "dependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/register": "^7.4.4",
-    "chai": "^4.2.0",
-    "mocha": "^6.1.4",
-    "sinon": "^7.3.2"
+    "express": "^4.16.1"
   }
 }
