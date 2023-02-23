@@ -11,30 +11,35 @@ export class CountdownSong {
       .join('\n');
   }
 
-  verse(number) {
+  actionText( number) {
     switch (number) {
-      case 0: return (
-        'No more cans of Lilt on the wall, ' +
-        'no more cans of Lilt.\n' +
-        'Go to the store and buy some more, ' +
-        '99 cans of Lilt on the wall.\n'
-      );
-      case 1: return (
-        '1 can of Lilt on the wall, ' +
-        '1 can of Lilt.\n' +
-        'Take it down and pass it around, ' +
-        'no more cans of Lilt on the wall.\n'
-      );
-      case 2: return (
-        '2 cans of Lilt on the wall, ' +
-        '2 cans of Lilt.\n' +
-        'Take one down and pass it around, ' +
-        '1 can of Lilt on the wall.\n'
-      );
-      default: return (
-        `${number} cans of Lilt on the wall, ` + `${number} cans of Lilt.\n` +
-        'Take one down and pass it around, ' + `${number - 1} cans of Lilt on the wall.\n`
-      );
+        case 0: return 'Go to the store and buy some more, ';
+        case 1: return 'Take it down and pass it around, ';
+        default: return 'Take one down and pass it around, ';
     }
+  }
+
+  quantityText( number, capitalize = false) {
+    switch (number) {
+        case 0: return capitalize ? "No more cans" : "no more cans";
+        case 1: return "1 can";
+        case 6: return "A six-pack";
+        default: return `${number} cans`;
+    }
+  }
+
+  nextQuantity(number){
+    return number == 0 ? 99 : number -1;
+  }
+
+  verse(number) {
+  
+      return (
+        `${this.quantityText(number, true)} of Lilt on the wall, ` + 
+        `${this.quantityText(number)} of Lilt.\n` +
+        `${this.actionText(number)}` + 
+        `${this.quantityText(this.nextQuantity(number))} of Lilt on the wall.\n`
+      );
+  
   }
 }
