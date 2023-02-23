@@ -1,0 +1,25 @@
+{
+  "name": "countdownsong",
+  "version": "1.0.0",
+  "description": "DRY refactoring exercise",
+  "main": "countdownSong.js",
+
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --require @babel/polyfill --require @babel/register './test/**/*.js'"
+  },
+  "author": "Dave Artus",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "sinon": "^7.3.2"
+  }
+}
