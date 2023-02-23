@@ -1,3 +1,4 @@
+var should = require('chai').should();
 import {CountdownSong} from "../src/CountdownSong.js";
 
 var assert = require('assert');
@@ -12,7 +13,7 @@ describe('range of verses', function() {
         '98 cans of Lilt on the wall, 98 cans of Lilt.\n' +
         'Take one down and pass it around, 97 cans of Lilt on the wall.\n'
        
-        assert.equal(songText, expected); 
+        songText.should.equal(expected); 
     });
   });
   
