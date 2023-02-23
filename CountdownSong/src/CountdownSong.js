@@ -20,13 +20,23 @@ export class CountdownSong {
   }
 
   quantityText( number, capitalize = false) {
+    let result;
     switch (number) {
-        case 0: return capitalize ? "No more cans" : "no more cans";
-        case 1: return "1 can";
-        case 6: return "A six-pack";
-        default: return `${number} cans`;
+        case 0: result = "no more cans";
+                break;
+        case 1: result =  "1 can";
+                break;
+        case 6: result =  "a six-pack";
+                break;
+        default: result = `${number} cans`;
     }
+
+    let first = result.substring(0,1);
+    let remainder = result.substring(1);
+    return (capitalize ? first.toUpperCase() : first) + remainder;
   }
+
+  
 
   nextQuantity(number){
     return number == 0 ? 99 : number -1;
