@@ -1,9 +1,8 @@
 
 export class CountdownSong {
 
-  // default to starting at 99, can specify any positive number
-  constructor(start=99){
-       this.upper = start;
+  constructor(){
+       this.upper = 99;
   }
 
   // default to whole song, but can specify starting and ending verses
@@ -18,7 +17,7 @@ export class CountdownSong {
     if ( end < 0 ){
         end = 0;
     }
-    
+
     if ( end > start ){
       return "No song to sing if you end before you start\n";
     }
@@ -28,43 +27,31 @@ export class CountdownSong {
     .join('\n');
   }
 
-  actionText( number) {
-    switch (number) {
-        case 0: return 'Go to the store and buy some more, ';
-        case 1: return 'Take it down and pass it around, ';
-        default: return 'Take one down and pass it around, ';
-    }
-  }
-
-  quantityText( number, capitalize = false) {
-    let result;
-    switch (number) {
-        case 0: result = "no more cans";
-                break;
-        case 1: result =  "1 can";
-                break;
-        case 6: result =  "a six-pack";
-                break;
-        default: result = `${number} cans`;
-    }
-
-    let first = result.substring(0,1);
-    let remainder = result.substring(1);
-    return (capitalize ? first.toUpperCase() : first) + remainder;
-  }
-
-  nextQuantity(number){
-    return number == 0 ? this.upper : number -1;
-  }
-
   verse(number) {
-  
-      return (
-        `${this.quantityText(number, true)} of Lilt on the wall, ` + 
-        `${this.quantityText(number)} of Lilt.\n` +
-        `${this.actionText(number)}` + 
-        `${this.quantityText(this.nextQuantity(number))} of Lilt on the wall.\n`
+    switch (number) {
+      case 0: return (
+        'No more cans of Lilt on the wall, ' +
+        'no more cans of Lilt.\n' +
+        'Go to the store and buy some more, ' +
+        '99 cans of Lilt on the wall.\n'
       );
-  
+      case 1: return (
+        '1 can of Lilt on the wall, ' +
+        '1 can of Lilt.\n' +
+        'Take it down and pass it around, ' +
+        'no more cans of Lilt on the wall.\n'
+      );
+      case 2: return (
+        '2 cans of Lilt on the wall, ' +
+        '2 cans of Lilt.\n' +
+        'Take one down and pass it around, ' +
+        '1 cans of Lilt on the wall.\n'
+      );
+      default: return (
+        `${number} cans of Lilt on the wall, ` + `${number} cans of Lilt.\n` +
+        'Take one down and pass it around, ' + `${number - 1} cans of Lilt on the wall.\n`
+      );
+    }
   }
+
 }
