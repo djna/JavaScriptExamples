@@ -22,7 +22,7 @@ describe('Range of verses', function() {
   describe('Reset to top', function() {
     it('three verses showing reset ', function() {
         let song  = new CountdownSong();     
-        let songText = song.song(98); 
+        let songText = song.song(97); 
         let expected = '2 cans of Lilt on the wall, 2 cans of Lilt.\n' +
         'Take one down and pass it around, 1 can of Lilt on the wall.\n' +
         '\n' +
