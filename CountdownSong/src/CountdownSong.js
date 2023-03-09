@@ -36,21 +36,19 @@ export class CountdownSong {
     }
   }
 
-  quantityText( number, capitalize = false) {
-    let result;
+  quantityText( number ) {
     switch (number) {
-        case 0: result = "no more cans";
-                break;
-        case 1: result =  "1 can";
-                break;
-        case 6: result =  "a six-pack";
-                break;
-        default: result = `${number} cans`;
+        case 0: return "no more cans";             
+        case 1: return  "1 can";              
+        case 6: return  "a six-pack";        
+        default: return `${number} cans`;
     }
+  }
 
-    let first = result.substring(0,1);
-    let remainder = result.substring(1);
-    return (capitalize ? first.toUpperCase() : first) + remainder;
+  capitalize(text){
+    let first = text.substring(0,1);
+    let remainder = text.substring(1);
+    return first.toUpperCase() + remainder;
   }
 
   nextQuantity(number){
@@ -60,7 +58,7 @@ export class CountdownSong {
   verse(number) {
   
       return (
-        `${this.quantityText(number, true)} of Lilt on the wall, ` + 
+        `${this.capitalize(this.quantityText(number))} of Lilt on the wall, ` + 
         `${this.quantityText(number)} of Lilt.\n` +
         `${this.actionText(number)}` + 
         `${this.quantityText(this.nextQuantity(number))} of Lilt on the wall.\n`
