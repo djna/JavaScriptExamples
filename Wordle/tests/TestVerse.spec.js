@@ -1,6 +1,6 @@
 var should = require('chai').should();
 
-import {CountdownSong} from "../src/CountdownSong";
+import {CountdownSong} from "../src/WordChecker";
 var assert = require('assert');
 describe('Verse variations', function() {
   describe('First Verse', function() {

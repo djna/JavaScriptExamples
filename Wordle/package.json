@@ -2,11 +2,11 @@
   "name": "countdown",
   "version": "1.0.0",
   "description": "",
-  "main": "src/Singer.js",
+  "main": "src/Wordle.js",
   "scripts": {
     "clean": "del-cli dist/**/* logs/*",
     "build": "npm run clean && babel ./src --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files ",
-    "start": "npm run build && node dist/Singer.js",
+    "start": "npm run build && node dist/Wordle.js",
     "test": "mocha --compilers js:babel-core/register \"./tests/**/*.spec.js\""
   },
   "author": "",
