@@ -46,11 +46,11 @@ class Wordle {
     }
 
     async playGame(){
-        let target = this.dictionary[0];
+        let target = this.dictionary[Math.floor(Math.random()*this.dictionary.length)];
         let checker = new WordChecker(target);
         let done = false;
         let attempts = 0;
-        while ( (! done) && attempts <= 6 ){
+        while ( (! done) && attempts < 6 ){
             attempts++;
             let guess =  await this.prompt(`${attempts}). Enter guess or :q to stop? `);
             if ( guess === ":q"){
@@ -64,6 +64,9 @@ class Wordle {
                     console.log(`match:${[...result.indicators].join("")}:`)
                 }
             }
+        }
+        if ( attempts >= 6){
+            console.log(`Unlucky, the answer was :${target}:`);
         }
         
     }
