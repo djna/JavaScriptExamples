@@ -12,12 +12,17 @@ class Wordle {
     constructor() {
         let filePath = "Wonder.txt";
         const data = readFileSync(filePath, 'utf-8');
-        const regex = /\b\w{5}\b/g;
-        this.dictionary = [...data.matchAll(regex)].map(
-            (entry) => entry[0]
-        );
+        const fiveLetterWordRegex = /(?!.{0,4}_)\b\w{5}\b/g;
+        const fiveLetterWords = [...data.matchAll(fiveLetterWordRegex)].map(   
+            (entry) => entry[0].toLowerCase() // entry is an array, first element the matched word
+        ).filter( 
+            ( word) => [...new Set(word)].length == 5
+        ).sort(Intl.Collator().compare);
 
-        console.log(`Dictionary: ${this.dictionary}`);
+        this.dictionary = [...new Set(fiveLetterWords)];
+        this.dictionaryStr = [...new Set(fiveLetterWords)].join(" ");
+
+        console.log(`Dictionary: ${this.dictionaryStr}`);
 
         this.rl = readline.createInterface({ input, output });
 
@@ -74,15 +79,46 @@ class Wordle {
                     return;
                 }else {
                     console.log(`match:${[...result.indicators].join("")}:`)
+                    if ( attempts == 5){
+                        this.displayHint(result);
+                    }
                 }
             }
         }
         if ( attempts >= 6 ){
             console.log(`Unlucky, the answer was :${target}:`);
-        }
-        
+        } 
     }
+    displayHint(result) {
+        let hintRegexStr = this.regexFromIndicators(result.indicators);
+        console.log(`Hint Regex: ${hintRegexStr}`);
+        let hintRegex = new RegExp(hintRegexStr, "gmi");
+        let hints = [...this.dictionaryStr.matchAll(hintRegex)].map(
+            (hint) => hint[0]
+        ).sort(Intl.Collator().compare);
+
+        console.log(`Hints ${hints}`);
+    }
+
+    regexFromIndicators(indicators){
+
+        return indicators.map(
+            (oneIndicator, index) => {
+                  if ( oneIndicator === " ") {
+                      return "";
+                  } else if ( /[a-z]/.test(oneIndicator) ) {
+                    return `(?=.{0,4}${oneIndicator})`; 
+                  } else if ( index == 0) {
+                    return `(?=${oneIndicator})`; 
+                  } else {
+                    return `(?=.{${index}}${oneIndicator})`; 
+                  }
+            }
+        ).join("")+"\\b\\w{5}\\b";
+    }
+    
 }
+
 
 
 
