@@ -16,7 +16,7 @@ class Wordle {
         const fiveLetterWords = [...data.matchAll(fiveLetterWordRegex)].map(   
             (entry) => entry[0].toLowerCase() // entry is an array, first element the matched word
         ).filter( 
-            ( word) => [...new Set(word)].length == 5
+            ( word) => [...new Set(word)].length == word.length
         ).sort(Intl.Collator().compare);
 
         this.dictionary = [...new Set(fiveLetterWords)];
