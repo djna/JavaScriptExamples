@@ -1,7 +1,6 @@
 
-# Coundown Song - refactoring exercise
+# Wordle RegExp exercise, starting point
 
 * install dependencies : npm install
-* build with babel : npm run build
-* execute demo : npm run start
-* test : npm run test
+* 
+* run: node Wordle.js
