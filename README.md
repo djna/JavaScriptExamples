@@ -10,3 +10,7 @@ Teaching Examples
     <p>Gutenberg word frequency, functional implementation</p>
 </a>
 
+<a href="https://gitpod.io/#https://github.com/djna/JavaScriptExamples/tree/AlgorithmsCollections" >
+    <p>Algorithms and Collections, simple search starting point.</p>
+</a>
+
