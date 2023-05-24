@@ -29,6 +29,28 @@ class Collection {
         return currentNode.data;
     }
 
+    delete(key){
+        if (this.myHead == null ){
+            return null;
+        }
+
+        let currentNode = this.myHead;
+        let previousNode = null;
+        while ( currentNode.data[this.myKey] !== key  ){
+            if (currentNode.next == null ){
+                return null;
+            }
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+        }
+        if ( previousNode ){
+            previousNode.next = currentNode.next;
+        } else {
+            this.myHead = currentNode.next;
+        }
+        return currentNode.data;
+    }
+
     get size(){
         let theSize = 0;
         let currentNode = this.myHead;

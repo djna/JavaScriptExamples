@@ -25,6 +25,20 @@ class ArrayCollection {
         return null;
     }
 
+    delete(key){
+        
+        // could use find(), do it long-hand
+        for (  let i = 0 ; i < this.myNextIndex; i++){
+            let candidate = this.myArray[i];
+            if ( candidate[this.myKey] === key ) {
+                this.myArray.splice(i, 1);
+                this.myNextIndex--;
+                return candidate;
+            }
+        }
+        return null;
+    }
+
     get size(){
         return this.myNextIndex;
     }
