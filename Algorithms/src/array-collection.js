@@ -6,41 +6,76 @@ class ArrayCollection {
         
         this.myKey = key;
         this.myArray = []; // starts empty, could pre-allocate with new Array(size)
-        this.myNextIndex = 0;
     }
 
+
     addItem(newItem){      
-        this.myArray[this.myNextIndex++] = newItem;
+       // todo check that newItem has a key value;
+       let location = this.locate(newItem[this.myKey]);
+       if (! location.found) {
+            this.myArray.splice(location.insertionPoint, 0, newItem);
+       }
+
+    }
+
+    locate(key){
+       
+        if ( this.myArray.length <= 0){
+            return {
+                found : false,
+                insertionPoint : 0
+            }
+        }
+
+        let left = 0;
+        let right = this.myArray.length - 1;
+        let candidateIndex;
+        while ( left <= right){
+            candidateIndex = Math.floor( (left + right) / 2);
+            let candidateItem = this.myArray[candidateIndex];
+            if ( candidateItem[this.myKey] == key ){
+                return {
+                    found : true,
+                    item : this.myArray[candidateIndex],
+                    index : candidateIndex
+                }
+            } else if ( candidateItem[this.myKey] > key ){
+                right = candidateIndex -1;
+            } else {
+                left = candidateIndex + 1;
+            }
+        }
+
+       
+        return {
+            found : false,
+            insertionPoint : left 
+        }
+        
+
     }
 
     find(key){
         
-        // could use find(), do it long-hand
-        for (  let i = 0 ; i < this.myNextIndex; i++){
-            let candidate = this.myArray[i];
-            if ( candidate[this.myKey] === key ) {
-                return candidate;
-            }
-        }
-        return null;
+        let location = this.locate(key);
+        return location.item;
+        
     }
 
     delete(key){
         
-        // could use find(), do it long-hand
-        for (  let i = 0 ; i < this.myNextIndex; i++){
-            let candidate = this.myArray[i];
-            if ( candidate[this.myKey] === key ) {
-                this.myArray.splice(i, 1);
-                this.myNextIndex--;
-                return candidate;
-            }
+        let location = this.locate(key);
+        if ( location.found){
+            this.myArray.splice(location.index, 1);
+            return location.item;
+        } else {
+            return null;
         }
-        return null;
+            
     }
 
     get size(){
-        return this.myNextIndex;
+        return this.myArray.length;
     }
 };
 

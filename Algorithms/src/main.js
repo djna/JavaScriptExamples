@@ -11,10 +11,10 @@
 // uncomment one of these to select a list implementation
 
 // Linked List
-const  { Collection } = require('./list-collection.js');
+//const  { Collection } = require('./list-collection.js');
 
 // Array List
-//const  { Collection } = require('./array-collection.js');
+const  { Collection } = require('./array-collection.js');
 
 // Some data
 const  bookList = require('./mockBooks.js');
