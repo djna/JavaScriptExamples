@@ -590,4 +590,4 @@ INSERT INTO books(title, author, isbn) VALUES('Playing Poker to Win', 'Andrea Sh
 INSERT INTO books(title, author, isbn) VALUES('Somebody Should Have Told Us!', 'Jack Pransky', '')
 INSERT INTO books(title, author, isbn) VALUES('Practical Vim', 'Drew Neil', '')
 
-
+GO
