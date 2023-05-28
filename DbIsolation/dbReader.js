@@ -3,33 +3,30 @@ const sql = require('mssql');
 // Configuration for the SQL Server connection
 const config = {
     user: 'sa',
+    //password: '***thepassword***',
     password: 'DaveDockedSoftwire2021',
     server: 'localhost',
     database: 'splendid',
     trustServerCertificate:true,
   };
 
-// Function to perform a dirty read
-async function performDirtyRead() {
+// Function to read with different isolation levels
+async function performRead() {
   try {
     // Connect to the SQL Server database
     await sql.connect(config);
 
     // Begin a transaction with the READ UNCOMMITTED isolation level
     const transaction = new sql.Transaction();
-    // transaction.isolationLevel = sql.ISOLATION_LEVEL.READ_UNCOMMITTED;
-    transaction.isolationLevel = sql.ISOLATION_LEVEL.SERIALIZABLE;
+    // TODO specify isolation level
+       
     await transaction.begin();
 
     try {
-      // Execute a dirty read query
-      const result = await transaction.request().query(`SELECT * FROM books where isbn like '1000%' `);
+        // TODO read data a report it
+        console.log("Read not implemented")
 
-      // Process the result
-      console.log(result.recordset);
-
-      // Commit the transaction
-      await transaction.commit();
+        await transaction.commit()
     } catch (error) {
       // Rollback the transaction if an error occurs
       await transaction.rollback();
@@ -43,5 +40,5 @@ async function performDirtyRead() {
   }
 }
 
-// Call the function to perform the dirty read
-performDirtyRead();
+// work with database
+performRead();

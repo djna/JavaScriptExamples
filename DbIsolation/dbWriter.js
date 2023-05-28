@@ -3,7 +3,7 @@ const sql = require('mssql');
 // Configuration for the SQL Server connection
 const config = {
   user: 'sa',
-  password: 'DaveDockedSoftwire2021',
+  password: '***password***', //TODO specify your password
   server: 'localhost',
   database: 'splendid',
   trustServerCertificate:true,
@@ -23,9 +23,9 @@ async function writeAndPause() {
       // Execute an INSERT query
     await transaction.request().query(
         `INSERT INTO books(title, author, isbn) 
-        VALUES(
+         VALUES(
             'More Information', 'Arthur Author', '100024'
-        )
+         )
         `
         );
     console.log('Data inserted, not yet committed.');
