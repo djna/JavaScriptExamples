@@ -14,3 +14,7 @@ Teaching Examples
     <p>Algorithms and Collections, simple search starting point.</p>
 </a>
 
+<a href="https://gitpod.io/#https://github.com/djna/JavaScriptExamples/tree/ComplexityExamples" >
+    <p>Algorithms and Collections, routing example.</p>
+</a>
+
