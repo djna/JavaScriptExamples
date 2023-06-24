@@ -18,3 +18,7 @@ Teaching Examples
     <p>Algorithms and Collections, routing example.</p>
 </a>
 
+<a href="https://gitpod.io/#https://github.com/djna/JavaScriptExamples/tree/WordSearch" >
+    <p>Word Search comparison, starting point.</p>
+</a>
+
