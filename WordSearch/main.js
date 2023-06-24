@@ -20,6 +20,10 @@ const  { Collection } = require('./array-collection.js');
 
 let bookCollection = new Collection();
 
+let howMany = parseInt(process.argv[2]);
+if ( ! howMany ){
+    howMany = 5;
+}
 
 var wordArray = fs.readFileSync("./words.txt").toString('utf-8').split("\n");
 
@@ -35,16 +39,15 @@ console.log("Load elapsed = " + (endTime - startTime) + "ms");
 console.log("bookCollection - " + bookCollection.size + " items" );
 
 // time how long to find a book in the middle of the collection
-
-for (let i = 0; i < 100; i++){
 startTime = new Date();
+for (let i = 0; i < howMany; i++){
     // find an arbitrary book
     let target = wordArray[ Math.floor(Math.random() * wordArray.length)];
     let found = bookCollection.find( target );
-    console.log("Found " + found);
+    //console.log("Found " + found);
 }
 
 endTime = new Date();
-console.log("Find elapsed = " + (endTime - startTime) + "ms");
+console.log(`Find ${howMany} repetitions, elapsed = ${(endTime - startTime)}ms`);
 
 
