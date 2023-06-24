@@ -35,19 +35,28 @@ wordArray.forEach(element => {
 let endTime = new Date();
 console.log("Load elapsed = " + (endTime - startTime) + "ms");
 
+// sanity check, do we correctly fail to find things?
+let noneSuch = bookCollection.find( "A value that should not exist" );
+
+if ( noneSuch){
+    console.log(`Unexpectedly found ${noneSuch}` );
+}
 
 console.log("bookCollection - " + bookCollection.size + " items" );
 
 // time how long to find a book in the middle of the collection
+let failureCount = 0;
 startTime = new Date();
 for (let i = 0; i < howMany; i++){
     // find an arbitrary book
     let target = wordArray[ Math.floor(Math.random() * wordArray.length)];
     let found = bookCollection.find( target );
-    //console.log("Found " + found);
+    if ( ! (target === found)){
+         failureCount++;
+    }
 }
 
 endTime = new Date();
-console.log(`Find ${howMany} repetitions, elapsed = ${(endTime - startTime)}ms`);
+console.log(`Find ${howMany} repetitions, elapsed = ${(endTime - startTime)}ms, ${failureCount} failures`);
 
 
