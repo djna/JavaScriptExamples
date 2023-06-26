@@ -22,3 +22,7 @@ Teaching Examples
     <p>Word Search comparison, starting point.</p>
 </a>
 
+<a href="https://gitpod.io/#https://github.com/djna/JavaScriptExamples/tree/Sudoku" >
+    <p>Sudoku starting point.</p>
+</a>
+
