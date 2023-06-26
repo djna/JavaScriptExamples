@@ -57,35 +57,20 @@ let initialBoard = [
     }
 
     function isValidInRow(row, guess, board) {
-        for (let col = 0; col < 9; col++) {
-            if (board[row][col] == guess) {
-                return false;
-            }
-        }
-        return true;
+       // TODO implementy
     }
 
     function isValidInCol(col, guess, board) {
-        for (let row = 0; row < 9; row++) {
-            if (board[row][col] == guess) {
-                return false;
-            }
-        }
-        return true;
+        // TODO - implement
+        return false;
     }
 
     function isValidInSquare( slot, guess, board) {
         let squareX = Math.floor(slot[0] / 3);
         let squareY = Math.floor(slot[1] / 3);
 
-        for (let row = squareX * 3; row < (squareX + 1) * 3; row++) {
-            for (let col = squareY * 3; col < (squareY + 1) * 3; col++) {
-                if (board[row][col] == guess) {
-                    return false;
-                }
-            }
-        }
-        return true;
+        // TODO implement check within this square
+        return false;
     }
 
 
@@ -99,14 +84,8 @@ let initialBoard = [
     }
 
     function printBoard(board) {
-        board.forEach(row => {
-            let rowString = "";
-            row.forEach( cell => {
-                rowString += (cell == 0) ? "  " : cell + " ";
-            })
-            console.log(rowString);
-        })
-        console.log();
+   
+        console.log("*** TODO *** ");
     }
 
 
